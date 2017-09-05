@@ -10,13 +10,15 @@ function activate(context) {
     } else {
       textToPaste = editor.document.getText(editor.selection);
     }
-    exec(
+    textToPaste = textToPaste.replace(/\'/g, "\\'").replace(/\"/g, '\\"');
+    const command =
       `osascript ` +
-        ` -e 'tell app "iTerm"' ` +
-        ` -e 'set mysession to current session of current window' ` +
-        ` -e 'tell mysession to write text "${textToPaste}"' ` +
-        ` -e 'end tell'`
-    );
+      ` -e 'tell app "iTerm"' ` +
+      ` -e 'set mysession to current session of current window' ` +
+      ` -e 'tell mysession to write text "${textToPaste}"' ` +
+      ` -e 'end tell'`;
+    console.log(command);
+    exec(command);
   });
 
   context.subscriptions.push(runIterm);
