@@ -7,9 +7,7 @@
   "engines": {
     "vscode": "^1.15.0"
   },
-  "categories": [
-    "Other"
-  ],
+  "categories": ["Other"],
   "main": "./extension",
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
@@ -25,11 +23,9 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/nachocab/vscode-run-external"
   },
-  "activationEvents": [
-    "onCommand:run-external.iterm"
-  ],
+  "activationEvents": ["onCommand:run-external.iterm"],
   "contributes": {
     "commands": [
       {
