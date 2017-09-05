@@ -1,0 +1,48 @@
+{
+  "name": "run-external",
+  "displayName": "Run external",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "nachocab",
+  "engines": {
+    "vscode": "^1.15.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension",
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.2",
+    "vscode": "^1.1.5",
+    "mocha": "^3.5.0",
+    "eslint": "^4.6.1",
+    "@types/node": "^8.0.26",
+    "@types/mocha": "^2.2.42"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "activationEvents": [
+    "onCommand:run-external.iterm"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "run-external.iterm",
+        "title": "Run in iTerm"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "run-external.iterm",
+        "key": "cmd+alt+enter",
+        "when": "editorTextFocus"
+      }
+    ]
+  }
+}
