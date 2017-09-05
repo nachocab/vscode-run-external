@@ -17,7 +17,6 @@ function activate(context) {
       ` -e 'set mysession to current session of current window' ` +
       ` -e 'tell mysession to write text "${textToPaste}"' ` +
       ` -e 'end tell'`;
-    console.log(command);
     exec(command);
   });
 
