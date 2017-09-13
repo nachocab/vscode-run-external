@@ -4,17 +4,24 @@ const { exec } = require('child_process');
 function activate(context) {
   const runIterm = vscode.commands.registerCommand('run-external.iterm', function() {
     const editor = vscode.window.activeTextEditor;
-    let textToPaste;
-    if (editor.selection.isEmpty) {
-      textToPaste = editor.document.lineAt(editor.selection.active.line).text;
-    } else {
-      textToPaste = editor.document.getText(editor.selection);
-    }
-    textToPaste = textToPaste
-      .replace(/\\/g, '\\\\')
+
+    let textToPaste = editor.selections
+      .sort((a, b) => a.start.line - b.start.line) // sort selections by line
+      .map(selection => {
+        // combine multiple cursors
+        if (selection.isEmpty) {
+          return editor.document.lineAt(selection.active.line).text;
+        } else {
+          return editor.document.getText(selection);
+        }
+      })
+      .join('\n')
+      .replace(/\\/g, '\\\\') // escape quotes
       .replace(/\'/g, "\\'")
       .replace(/\"/g, '\\"');
-    // console.log("textToPaste", textToPaste);
+    // console.log('textToPaste', textToPaste);
+    // console.log(editor.selections);
+
     const command =
       `osascript ` +
       ` -e 'tell app "iTerm"' ` +

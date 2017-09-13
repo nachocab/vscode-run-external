@@ -2,7 +2,7 @@
   "name": "run-external",
   "displayName": "Run in iTerm",
   "description": "Send the current selection or line to iTerm",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "publisher": "nachocab",
   "engines": {
     "vscode": "^1.15.0"
