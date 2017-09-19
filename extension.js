@@ -17,7 +17,6 @@ function activate(context) {
       })
       .join('\n')
       .replace(/\\/g, '\\\\') // escape quotes
-      .replace(/\'/g, "\\'")
       .replace(/\"/g, '\\"');
     // console.log('textToPaste', textToPaste);
     // console.log(editor.selections);
