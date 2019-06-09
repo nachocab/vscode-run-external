@@ -19,6 +19,9 @@ function activate(context) {
       .replace(/\\/g, '\\\\') // escape quotes
       .replace(/'/g, "'\\''") // escape quotes
       .replace(/\"/g, '\\"');
+    const position = editor.selection.active;
+    let newPosition = position.with(position.line + 1, 0);
+    editor.selection = new vscode.Selection(newPosition, newPosition);
     // console.log('textToPaste', textToPaste);
     // console.log(editor.selections);
 
